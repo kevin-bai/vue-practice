@@ -13,15 +13,15 @@ const defaultPlugins = [
         }
     }),
     new HTMLPlugin({
-        template: path.join(__dirname,'./template.html')
+        template: path.join(__dirname, './template.html')
     })
 ]
 
 const devServer = {
-    port: 8081,
+    port: 8080,
     host: '0.0.0.0',
     overlay: {
-        errors: true,
+        errors: true
     },
     hot: true
 }
@@ -29,7 +29,7 @@ const devServer = {
 let config
 
 config = merge(baseConfig, {
-    entry: path.join(__dirname, '../practice/index.js'),
+    entry: path.join(__dirname, '../practice/instance/index.js'),
     devtool: '#cheap-module-eval-source-map',
     module: {
         rules: [
