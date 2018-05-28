@@ -6,6 +6,7 @@
   "parser": "babel-eslint",
   "rules": {
     "no-new":"off",
-    "indent":[1,4]
+    "indent":[1,4],
+    "no-unused-vars": "warn"
   }
 }

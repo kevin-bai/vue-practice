@@ -24,12 +24,10 @@ console.log(app.$props)
 console.log(app.$el)
 // 上面创建vue实例 传进去的整个{xxx}+默认值 合并， 是app.$options
 console.log(app.$options)
-
 // 当页面触发重新render的时候，这个render的函数会执行
-app.$options.render = (h) => {
-    return h('div', {}, 'new render function')
-}
-
+// app.$options.render = (h) => {
+//     return h('div', {}, 'new render function')
+// }
 // app.$root是vue最外层挂载的节点对象
 console.log(app.$root === app)
 console.log(app.$children)
@@ -40,3 +38,10 @@ console.log(app.$scopedSlots)
 console.log(app.$refs)
 // 服务端渲染会用到，判断是否是server
 console.log(app.$isServer)
+
+// 实例方法
+const unWatch = app.$watch('text', (newValue, oldValue) => {
+    console.log(`${newValue}|${oldValue}`)
+})
+// 销毁watch的方法
+// unWatch()
