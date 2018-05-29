@@ -27,21 +27,21 @@
                 required: true
             }
         },
-        data() {
+        data () {
             return {
                 states: ['all', 'active', 'completed']
             }
         },
         computed: {
-            unFinishedTodoLength() {
+            unFinishedTodoLength () {
                 return this.todos.filter(todo => !todo.completed).length
             }
         },
         methods: {
-            clearAllCompleted() {
+            clearAllCompleted () {
                 this.$emit('clearAllCompleted')
             },
-            toggleFilter(state) {
+            toggleFilter (state) {
                 this.$emit('toggle', state)
             }
         }

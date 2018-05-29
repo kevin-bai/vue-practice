@@ -2,20 +2,29 @@ import Vue from 'vue'
 
 const app = new Vue({
     // el: '#root',
-    template: '<div>this is {{text}}</div>>',
+    template: '<div>this is {{text}} {{obj.a}}</div>>',
     data: {
-        text: 0
+        text: 0,
+        obj: {}
     }
 })
 
 app.$mount('#root')
 
+let i = 0
 setInterval(() => {
-    app.text += 1
+    i++
+    // app.text += 1
     // 这个和上面是一样的，实际上app.text 就是被代理到app.$data上
     // app.$data.text +=1
     // 这个不行和上面的其实不是一个对象
     // app.$options.data.text += 1
+
+    // app.$data.obj.a = i
+    app.$set(app.$data.obj, 'a', i)
+
+    // 彻底的删除这个obj，包括他的reactive响应
+    // app.$delete(app.$data.obj.a)
 }, 1000)
 
 // vue instance上所有的属性
@@ -44,4 +53,6 @@ const unWatch = app.$watch('text', (newValue, oldValue) => {
     console.log(`${newValue}|${oldValue}`)
 })
 // 销毁watch的方法
-// unWatch()
+setTimeout(() => {
+    unWatch()
+}, 2000)
